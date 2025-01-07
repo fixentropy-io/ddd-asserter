@@ -1,8 +1,8 @@
 import { describe } from 'bun:test';
-import { rulePassed, ruleFailed } from '../../test_utils';
+import { ruleFailed, rulePassed } from '../../test_utils';
 
 describe('Value object rules', () => {
-    const VALUE_OBJECTS_FOLDER = `./ddd/value-objects-rules/`;
+    const VALUE_OBJECTS_FOLDER = './ddd/value-objects-rules/';
     const VALUE_OBJECT_ALLOWED_DEPENDENCIES_RULE = 'value-object-allowed-dependencies';
 
     describe('Should only contains entities', () => {

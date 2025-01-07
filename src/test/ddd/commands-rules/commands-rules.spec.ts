@@ -1,8 +1,8 @@
 import { describe } from 'bun:test';
-import { rulePassed, ruleFailed } from '../../test_utils';
+import { ruleFailed, rulePassed } from '../../test_utils';
 
 describe('Command rules', () => {
-    const COMMAND_FOLDER = `./ddd/commands-rules/`;
+    const COMMAND_FOLDER = './ddd/commands-rules/';
     const COMMANDS_ALLOWED_DEPENDENCIES_RULE = 'commands-allowed-dependencies';
 
     describe('Should only contains Aggregate', () => {

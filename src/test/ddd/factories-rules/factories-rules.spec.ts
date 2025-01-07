@@ -1,8 +1,8 @@
 import { describe } from 'bun:test';
-import { rulePassed, ruleFailed } from '../../test_utils';
+import { ruleFailed, rulePassed } from '../../test_utils';
 
 describe('Factory rules', () => {
-    const FACTORIES_FOLDER = `./ddd/factories-rules/`;
+    const FACTORIES_FOLDER = './ddd/factories-rules/';
     const FACTORIES_ALLOWED_DEPENDENCIES_RULE = 'factories-allowed-dependencies';
 
     describe('Should only contains entities, value objects or aggregates', () => {
