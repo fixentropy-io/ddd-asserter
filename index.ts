@@ -1,4 +1,4 @@
-import { findRule, findRules, type Asserter } from '@dragee-io/type/asserter';
+import { type Asserter, findRule, findRules } from '@dragee-io/type/asserter';
 
 export default {
     namespace: 'ddd',

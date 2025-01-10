@@ -1,8 +1,8 @@
 import { describe } from 'bun:test';
-import { rulePassed, ruleFailed } from '../../test_utils';
+import { ruleFailed, rulePassed } from '../../test_utils';
 
 describe('Service rules', () => {
-    const SERVICE_FOLDER = `./ddd/services-rules/`;
+    const SERVICE_FOLDER = './ddd/services-rules/';
     const SERVICE_ALLOWED_DEPENDENCIES_RULE = 'services-allowed-dependencies';
 
     describe('Should only contains repositories, entities or value object', () => {

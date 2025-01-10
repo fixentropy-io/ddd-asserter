@@ -1,5 +1,5 @@
-import { type Report, asserterHandler } from '@dragee-io/type/asserter';
 import { describe, expect, test } from 'bun:test';
+import { type Report, asserterHandler } from '@dragee-io/type/asserter';
 
 import dddAsserter from '../..';
 
