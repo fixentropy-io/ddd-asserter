@@ -1,0 +1,28 @@
+{
+    "dragees": [
+        {
+            "name": "AnEvent",
+            "profile": "ddd/event"
+        },
+        {
+            "name": "AValueObject",
+            "profile": "ddd/value_object"
+        },
+        {
+            "name": "ACommand",
+            "profile": "ddd/command"
+        },
+        {
+            "name": "AnEntity",
+            "profile": "ddd/entity",
+            "depends_on": {
+                "AnEvent": ["field"],
+                "AValueObject": ["field"],
+                "ACommand": ["field"]
+            }
+        }
+    ],
+    "result": {
+        "pass": true
+    }
+}

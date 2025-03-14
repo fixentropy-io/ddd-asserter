@@ -1,0 +1,25 @@
+{
+    "dragees": [
+        {
+            "name": "AnAggregate",
+            "profile": "ddd/aggregate"
+        },
+        {
+            "name": "AnEntity",
+            "profile": "ddd/entity",
+            "depends_on": {
+                "AnAggregate": ["field"]
+            }
+        }
+    ],
+    "result": {
+        "pass": false,
+        "errors": [
+            {
+                "drageeName": "AnEntity",
+                "message": "This entity must not have any dependency other than of types ddd/command, ddd/event or ddd/value_object",
+                "ruleId": "ddd/entities-allowed-dependencies"
+            }
+        ]
+    }
+}
