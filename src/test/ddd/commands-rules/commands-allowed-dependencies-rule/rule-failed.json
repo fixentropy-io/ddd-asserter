@@ -17,7 +17,7 @@
         "errors": [
             {
                 "drageeName": "ACommand",
-                "message": "This command must not have any dependency of type \"ddd/event\"",
+                "message": "This command must only have a dependency of type \"ddd/value_object\"",
                 "ruleId": "ddd/commands-allowed-dependencies"
             }
         ]

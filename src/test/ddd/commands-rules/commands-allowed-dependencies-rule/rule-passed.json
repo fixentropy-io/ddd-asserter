@@ -1,21 +1,19 @@
 {
     "dragees": [
         {
-            "name": "AnAggregate",
-            "profile": "ddd/aggregate",
-            "depends_on": {
-                "AnEntity": ["field"]
-            }
+            "name": "AValueObject",
+            "profile": "ddd/value_object"
         },
         {
-            "name": "AnEntity",
-            "profile": "ddd/entity"
+            "name": "AnotherValueObject",
+            "profile": "ddd/value_object"
         },
         {
             "name": "ACommand",
             "profile": "ddd/command",
             "depends_on": {
-                "AnAggregate": ["field"]
+                "AValueObject": ["field"],
+                "AnotherValueObject": ["field"]
             }
         }
     ],
