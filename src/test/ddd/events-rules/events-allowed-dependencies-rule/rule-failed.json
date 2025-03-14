@@ -1,0 +1,25 @@
+{
+    "dragees": [
+        {
+            "name": "AnEntity",
+            "profile": "ddd/entity"
+        },
+        {
+            "name": "AnEvent",
+            "profile": "ddd/event",
+            "depends_on": {
+                "AnEntity": ["field"]
+            }
+        }
+    ],
+    "result": {
+        "pass": false,
+        "errors": [
+            {
+                "drageeName": "AnEvent",
+                "message": "This event must not have any dependency other than \"ddd/value_object\"",
+                "ruleId": "ddd/events-allowed-dependencies"
+            }
+        ]
+    }
+}

@@ -1,0 +1,18 @@
+{
+    "dragees": [
+        {
+            "name": "AValueObject",
+            "profile": "ddd/value_object"
+        },
+        {
+            "name": "AnEvent",
+            "profile": "ddd/event",
+            "depends_on": {
+                "AValueObject": ["field"]
+            }
+        }
+    ],
+    "result": {
+        "pass": true
+    }
+}
