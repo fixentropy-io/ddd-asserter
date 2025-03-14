@@ -21,6 +21,6 @@
     },
     "trustedDependencies": ["@biomejs/biome"],
     "dependencies": {
-        "@dragee-io/type": "0.0.1"
+        "@dragee-io/type": "0.0.2"
     }
 }
