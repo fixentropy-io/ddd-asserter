@@ -13,12 +13,17 @@
             "profile": "ddd/value_object"
         },
         {
+            "name": "ACommand",
+            "profile": "ddd/command"
+        },
+        {
             "name": "AnAggregate",
             "profile": "ddd/aggregate",
             "depends_on": {
                 "AnEntity": ["field"],
                 "AValueObject": ["field"],
-                "AnEvent": ["field"]
+                "AnEvent": ["field"],
+                "ACommand": ["field"]
             }
         }
     ],

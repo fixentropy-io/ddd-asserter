@@ -19,39 +19,31 @@
  *
  */
 import {
-  type RuleResult,
-  RuleSeverity,
-  directDependencies,
-  expectDragee,
-} from "@dragee-io/type/asserter";
-import type { Dragee, DrageeDependency } from "@dragee-io/type/common";
-import {
-  bundledCommandProfile,
-  commandProfile,
-  profileOf,
-  profiles,
-} from "../ddd.model.ts";
+    type RuleResult,
+    RuleSeverity,
+    directDependencies,
+    expectDragee
+} from '@dragee-io/type/asserter';
+import type { Dragee, DrageeDependency } from '@dragee-io/type/common';
+import { bundledCommandProfile, commandProfile, profileOf, profiles } from '../ddd.model.ts';
 
-const assertDrageeDependency = ({
-  root,
-  dependencies,
-}: DrageeDependency): RuleResult[] =>
-  dependencies.map((dependency) =>
-    expectDragee(
-      root,
-      dependency,
-      `This bundled command must only have a dependency of type "${commandProfile}"`,
-      (dragee) => profileOf(dragee, commandProfile)
-    )
-  );
+const assertDrageeDependency = ({ root, dependencies }: DrageeDependency): RuleResult[] =>
+    dependencies.map(dependency =>
+        expectDragee(
+            root,
+            dependency,
+            `This bundled command must only have a dependency of type "${commandProfile}"`,
+            dragee => profileOf(dragee, commandProfile)
+        )
+    );
 
 export default {
-  label: "Bundled Commands Allowed Dependencies",
-  severity: RuleSeverity.ERROR,
-  handler: (dragees: Dragee[]): RuleResult[] =>
-    profiles[bundledCommandProfile]
-      .findIn(dragees)
-      .map((bundledCommand) => directDependencies(bundledCommand, dragees))
-      .filter((dep) => dep.dependencies)
-      .flatMap((dep) => assertDrageeDependency(dep)),
+    label: 'Bundled Commands Allowed Dependencies',
+    severity: RuleSeverity.ERROR,
+    handler: (dragees: Dragee[]): RuleResult[] =>
+        profiles[bundledCommandProfile]
+            .findIn(dragees)
+            .map(bundledCommand => directDependencies(bundledCommand, dragees))
+            .filter(dep => dep.dependencies)
+            .flatMap(dep => assertDrageeDependency(dep))
 };

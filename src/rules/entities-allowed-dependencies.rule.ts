@@ -71,42 +71,38 @@
  *
  */
 import {
-  type RuleResult,
-  RuleSeverity,
-  directDependencies,
-  expectDragee,
-} from "@dragee-io/type/asserter";
-import type { Dragee, DrageeDependency } from "@dragee-io/type/common";
+    type RuleResult,
+    RuleSeverity,
+    directDependencies,
+    expectDragee
+} from '@dragee-io/type/asserter';
+import type { Dragee, DrageeDependency } from '@dragee-io/type/common';
 import {
-  commandProfile,
-  entityProfile,
-  eventProfile,
-  profileOf,
-  profiles,
-  valueObjectProfile,
-} from "../ddd.model.ts";
+    commandProfile,
+    entityProfile,
+    eventProfile,
+    profileOf,
+    profiles,
+    valueObjectProfile
+} from '../ddd.model.ts';
 
-const assertDrageeDependency = ({
-  root,
-  dependencies,
-}: DrageeDependency): RuleResult[] =>
-  dependencies.map((dependency) =>
-    expectDragee(
-      root,
-      dependency,
-      `This entity must not have any dependency other than of types ${commandProfile}, ${eventProfile} or ${valueObjectProfile}`,
-      (dragee) =>
-        profileOf(dragee, valueObjectProfile, commandProfile, eventProfile)
-    )
-  );
+const assertDrageeDependency = ({ root, dependencies }: DrageeDependency): RuleResult[] =>
+    dependencies.map(dependency =>
+        expectDragee(
+            root,
+            dependency,
+            `This entity must not have any dependency other than of types ${commandProfile}, ${eventProfile} or ${valueObjectProfile}`,
+            dragee => profileOf(dragee, valueObjectProfile, commandProfile, eventProfile)
+        )
+    );
 
 export default {
-  label: "Entities Allowed Dependencies",
-  severity: RuleSeverity.ERROR,
-  handler: (dragees: Dragee[]): RuleResult[] =>
-    profiles[entityProfile]
-      .findIn(dragees)
-      .map((entity) => directDependencies(entity, dragees))
-      .filter((dep) => dep.dependencies)
-      .flatMap((dep) => assertDrageeDependency(dep)),
+    label: 'Entities Allowed Dependencies',
+    severity: RuleSeverity.ERROR,
+    handler: (dragees: Dragee[]): RuleResult[] =>
+        profiles[entityProfile]
+            .findIn(dragees)
+            .map(entity => directDependencies(entity, dragees))
+            .filter(dep => dep.dependencies)
+            .flatMap(dep => assertDrageeDependency(dep))
 };

@@ -65,39 +65,31 @@
  *
  */
 import {
-  type RuleResult,
-  RuleSeverity,
-  directDependencies,
-  expectDragee,
-} from "@dragee-io/type/asserter";
-import type { Dragee, DrageeDependency } from "@dragee-io/type/common";
-import {
-  commandProfile,
-  profileOf,
-  profiles,
-  valueObjectProfile,
-} from "../ddd.model.ts";
+    type RuleResult,
+    RuleSeverity,
+    directDependencies,
+    expectDragee
+} from '@dragee-io/type/asserter';
+import type { Dragee, DrageeDependency } from '@dragee-io/type/common';
+import { commandProfile, profileOf, profiles, valueObjectProfile } from '../ddd.model.ts';
 
-const assertDrageeDependency = ({
-  root,
-  dependencies,
-}: DrageeDependency): RuleResult[] =>
-  dependencies.map((dependency) =>
-    expectDragee(
-      root,
-      dependency,
-      `This command must only have a dependency of type "${valueObjectProfile}"`,
-      (dragee) => profileOf(dragee, valueObjectProfile)
-    )
-  );
+const assertDrageeDependency = ({ root, dependencies }: DrageeDependency): RuleResult[] =>
+    dependencies.map(dependency =>
+        expectDragee(
+            root,
+            dependency,
+            `This command must only have a dependency of type "${valueObjectProfile}"`,
+            dragee => profileOf(dragee, valueObjectProfile)
+        )
+    );
 
 export default {
-  label: "Commands Allowed Dependencies",
-  severity: RuleSeverity.ERROR,
-  handler: (dragees: Dragee[]): RuleResult[] =>
-    profiles[commandProfile]
-      .findIn(dragees)
-      .map((command) => directDependencies(command, dragees))
-      .filter((dep) => dep.dependencies)
-      .flatMap((dep) => assertDrageeDependency(dep)),
+    label: 'Commands Allowed Dependencies',
+    severity: RuleSeverity.ERROR,
+    handler: (dragees: Dragee[]): RuleResult[] =>
+        profiles[commandProfile]
+            .findIn(dragees)
+            .map(command => directDependencies(command, dragees))
+            .filter(dep => dep.dependencies)
+            .flatMap(dep => assertDrageeDependency(dep))
 };
