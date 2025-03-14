@@ -1,42 +1,48 @@
-import type { Dragee } from '@dragee-io/type/common';
+import type { Dragee } from "@dragee-io/type/common";
 
-export const entityProfile = 'ddd/entity';
-export const aggregateProfile = 'ddd/aggregate';
-export const commandProfile = 'ddd/command';
-export const factoryProfile = 'ddd/factory';
-export const serviceProfile = 'ddd/service';
-export const valueObjectProfile = 'ddd/value_object';
-export const eventProfile = 'ddd/event';
-export const repositoryProfile = 'ddd/repository';
+export const entityProfile = "ddd/entity";
+export const aggregateProfile = "ddd/aggregate";
+export const commandProfile = "ddd/command";
+export const factoryProfile = "ddd/factory";
+export const serviceProfile = "ddd/service";
+export const valueObjectProfile = "ddd/value_object";
+export const eventProfile = "ddd/event";
+export const repositoryProfile = "ddd/repository";
+export const bundledCommandProfile = "ddd/bundled_command";
 
 const profilesName = [
-    aggregateProfile,
-    entityProfile,
-    eventProfile,
-    repositoryProfile,
-    serviceProfile,
-    valueObjectProfile,
-    factoryProfile,
-    commandProfile
+  aggregateProfile,
+  entityProfile,
+  eventProfile,
+  repositoryProfile,
+  serviceProfile,
+  valueObjectProfile,
+  factoryProfile,
+  commandProfile,
+  bundledCommandProfile,
 ] as const;
 
 export type Profile = (typeof profilesName)[number];
 
 type DDDProfileChecks = {
-    [profile in Profile]: {
-        findIn: (dragees: Dragee[]) => Dragee[];
-        is: (profile: string) => boolean;
-    };
+  [profile in Profile]: {
+    findIn: (dragees: Dragee[]) => Dragee[];
+    is: (profile: string) => boolean;
+  };
 };
 
 export const profiles: DDDProfileChecks = {} as DDDProfileChecks;
 
 for (const profile of profilesName) {
-    profiles[profile] = {
-        is: (value: string) => value === profile,
-        findIn: (dragees: Dragee[]) => dragees.filter(dragee => dragee.profile === profile)
-    };
+  profiles[profile] = {
+    is: (value: string) => value === profile,
+    findIn: (dragees: Dragee[]) =>
+      dragees.filter((dragee) => dragee.profile === profile),
+  };
 }
 
-export const profileOf = (dragee: Dragee, ...profilesFilter: Profile[]): boolean =>
-    profilesFilter.map(kf => profiles[kf].is(dragee.profile)).some(b => b);
+export const profileOf = (
+  dragee: Dragee,
+  ...profilesFilter: Profile[]
+): boolean =>
+  profilesFilter.map((kf) => profiles[kf].is(dragee.profile)).some((b) => b);

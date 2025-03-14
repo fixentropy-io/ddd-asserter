@@ -1,0 +1,25 @@
+{
+    "dragees": [
+        {
+            "name": "ARepository",
+            "profile": "ddd/repository"
+        },
+        {
+            "name": "ABundledCommand",
+            "profile": "ddd/bundled_command",
+            "depends_on": {
+                "ARepository": ["field"]
+            }
+        }
+    ],
+    "result": {
+        "pass": false,
+        "errors": [
+            {
+                "drageeName": "ABundledCommand",
+                "message": "This bundled command must only have a dependency of type \"ddd/command\"",
+                "ruleId": "ddd/bundled-commands-allowed-dependencies"
+            }
+        ]
+    }
+}

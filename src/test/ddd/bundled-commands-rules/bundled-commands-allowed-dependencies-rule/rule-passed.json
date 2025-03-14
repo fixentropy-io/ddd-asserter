@@ -1,0 +1,18 @@
+{
+    "dragees": [
+        {
+            "name": "ACommand",
+            "profile": "ddd/command"
+        },
+        {
+            "name": "ABundledCommand",
+            "profile": "ddd/bundled_command",
+            "depends_on": {
+                "ACommand": ["field"]
+            }
+        }
+    ],
+    "result": {
+        "pass": true
+    }
+}

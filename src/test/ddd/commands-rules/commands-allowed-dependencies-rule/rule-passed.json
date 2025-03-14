@@ -5,15 +5,10 @@
             "profile": "ddd/value_object"
         },
         {
-            "name": "AnotherValueObject",
-            "profile": "ddd/value_object"
-        },
-        {
             "name": "ACommand",
             "profile": "ddd/command",
             "depends_on": {
-                "AValueObject": ["field"],
-                "AnotherValueObject": ["field"]
+                "AValueObject": ["field"]
             }
         }
     ],
