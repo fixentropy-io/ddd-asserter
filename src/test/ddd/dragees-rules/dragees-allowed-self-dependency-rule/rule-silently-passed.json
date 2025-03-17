@@ -1,0 +1,11 @@
+{
+    "dragees": [
+        {
+            "name": "AnEntity",
+            "profile": "ddd/entity"
+        }
+    ],
+    "result": {
+        "pass": true
+    }
+}

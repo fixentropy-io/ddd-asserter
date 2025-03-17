@@ -1,0 +1,22 @@
+{
+    "dragees": [
+        {
+            "name": "AnEvent",
+            "profile": "ddd/event"
+        },
+        {
+            "name": "OneSpecificEvent",
+            "profile": "ddd/event"
+        },
+        {
+            "name": "OneSpecificEvent",
+            "profile": "ddd/event",
+            "depends_on": {
+                "OneSpecificEvent": ["field"]
+            }
+        }
+    ],
+    "result": {
+        "pass": true
+    }
+}

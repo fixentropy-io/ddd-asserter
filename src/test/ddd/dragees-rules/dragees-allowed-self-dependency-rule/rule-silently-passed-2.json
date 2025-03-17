@@ -1,0 +1,22 @@
+{
+    "dragees": [
+        {
+            "name": "AnEntity",
+            "profile": "ddd/entity"
+        },
+        {
+            "name": "OneSpecificEvent",
+            "profile": "ddd/event"
+        },
+        {
+            "name": "OneSpecificEntity",
+            "profile": "ddd/entity",
+            "depends_on": {
+                "OneSpecificEvent": ["field"]
+            }
+        }
+    ],
+    "result": {
+        "pass": true
+    }
+}
