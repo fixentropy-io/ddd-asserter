@@ -1,6 +1,6 @@
 /**
  * **entitys-allowed-dependencies :**
- * Entitys can only have dependencies of types "ddd/value_object", "ddd/entity" and "ddd/event"
+ * Entities can only have dependencies of types "ddd/value_object", "ddd/entity" and "ddd/event"
  *
  * ## Examples
  *
