@@ -8,7 +8,6 @@ export const serviceProfile = 'ddd/service';
 export const valueObjectProfile = 'ddd/value_object';
 export const eventProfile = 'ddd/event';
 export const repositoryProfile = 'ddd/repository';
-export const bundledCommandProfile = 'ddd/bundled_command';
 
 const profilesName = [
     aggregateProfile,
@@ -18,8 +17,7 @@ const profilesName = [
     serviceProfile,
     valueObjectProfile,
     factoryProfile,
-    commandProfile,
-    bundledCommandProfile
+    commandProfile
 ] as const;
 
 export type Profile = (typeof profilesName)[number];
