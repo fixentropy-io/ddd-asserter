@@ -5,8 +5,8 @@
             "profile": "ddd/value_object"
         },
         {
-            "name": "ACommand",
-            "profile": "ddd/command",
+            "name": "AnEvent",
+            "profile": "ddd/event",
             "depends_on": {
                 "AValueObject": ["field"]
             }

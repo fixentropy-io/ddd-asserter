@@ -1,10 +1,6 @@
 {
     "dragees": [
         {
-            "name": "AnEntity",
-            "profile": "ddd/entity"
-        },
-        {
             "name": "AnEvent",
             "profile": "ddd/event"
         },
@@ -17,12 +13,11 @@
             "profile": "ddd/command"
         },
         {
-            "name": "AnAggregate",
-            "profile": "ddd/aggregate",
+            "name": "AnEntity",
+            "profile": "ddd/entity",
             "depends_on": {
-                "AnEntity": ["field"],
-                "AValueObject": ["field"],
                 "AnEvent": ["field"],
+                "AValueObject": ["field"],
                 "ACommand": ["field"]
             }
         }

@@ -5,10 +5,15 @@
             "profile": "ddd/service"
         },
         {
+            "name": "ACommand",
+            "profile": "ddd/command"
+        },
+        {
             "name": "AnAggregate",
             "profile": "ddd/aggregate",
             "depends_on": {
-                "AService": ["field"]
+                "AService": ["field"],
+                "ACommand": ["field"]
             }
         }
     ],

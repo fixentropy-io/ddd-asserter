@@ -1,6 +1,7 @@
 /**
  * **aggregates-allowed-dependencies :**
- * Aggregates can only have dependencies of types "ddd/value_object", "ddd/entity" and "ddd/event"
+ * Aggregates can only have dependencies of types "ddd/value_object", "ddd/entity", "ddd/command" and "ddd/event"
+ *
  *
  * ## Examples
  *
@@ -51,6 +52,7 @@ import {
 import type { Dragee, DrageeDependency } from '@dragee-io/type/common';
 import {
     aggregateProfile,
+    commandProfile,
     entityProfile,
     eventProfile,
     profileOf,
@@ -64,7 +66,8 @@ const assertDrageeDependency = ({ root, dependencies }: DrageeDependency): RuleR
             root,
             dependency,
             `This aggregate must not have any dependency of type "${dependency.profile}"`,
-            dragee => profileOf(dragee, valueObjectProfile, entityProfile, eventProfile)
+            dragee =>
+                profileOf(dragee, valueObjectProfile, entityProfile, eventProfile, commandProfile)
         )
     );
 

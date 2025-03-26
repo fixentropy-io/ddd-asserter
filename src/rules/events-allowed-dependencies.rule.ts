@@ -1,6 +1,6 @@
 /**
- * **commands-allowed-dependencies :**
- * Commands can only have dependencies of type "ddd/aggregate"
+ * **events-allowed-dependencies :**
+ * Events can only have dependencies of types "ddd/value_object"
  *
  * ## Examples
  *
@@ -10,14 +10,14 @@
  * {
  *    "dragees": [
  *        {
- *            "name": "AnEvent",
- *            "profile": "ddd/event"
+ *            "name": "AnEntity",
+ *            "profile": "ddd/entity"
  *        },
  *        {
- *            "name": "ACommand",
- *            "profile": "ddd/command",
+ *            "name": "AnEvent",
+ *            "profile": "ddd/event",
  *            "depends_on": {
- *                "AnEvent": ["field"]
+ *                "AnEntity": ["field"]
  *            }
  *        }
  *    ],
@@ -25,13 +25,13 @@
  *        "pass": false,
  *        "errors": [
  *            {
- *                "drageeName": "ACommand",
- *                "message": "This command must only have a dependency of type \"ddd/value_object\"",
- *                "ruleId": "ddd/commands-allowed-dependencies"
+ *                "drageeName": "AnEvent",
+ *                "message": "This event must not have any dependency other than \"ddd/value_object\"",
+ *                "ruleId": "ddd/events-allowed-dependencies"
  *            }
  *        ]
  *    }
- *}
+ * }
  * ```
  * Example of correct dragees for this rule:
  *
@@ -43,15 +43,10 @@
  *             "profile": "ddd/value_object"
  *         },
  *         {
- *             "name": "AnotherValueObject",
- *             "profile": "ddd/value_object"
- *         },
- *         {
- *             "name": "ACommand",
- *             "profile": "ddd/command",
+ *             "name": "AnEvent",
+ *             "profile": "ddd/event",
  *             "depends_on": {
- *                 "AValueObject": ["field"],
- *                 "AnotherValueObject": ["field"]
+ *                 "AValueObject": ["field"]
  *             }
  *         }
  *     ],
@@ -61,7 +56,7 @@
  * }
  * ```
  *
- * @module Commands Allowed Dependencies
+ * @module Events Allowed Dependencies
  *
  */
 import {
@@ -71,25 +66,31 @@ import {
     expectDragee
 } from '@dragee-io/type/asserter';
 import type { Dragee, DrageeDependency } from '@dragee-io/type/common';
-import { commandProfile, profileOf, profiles, valueObjectProfile } from '../ddd.model.ts';
+import {
+    aggregateProfile,
+    eventProfile,
+    profileOf,
+    profiles,
+    valueObjectProfile
+} from '../ddd.model.ts';
 
 const assertDrageeDependency = ({ root, dependencies }: DrageeDependency): RuleResult[] =>
     dependencies.map(dependency =>
         expectDragee(
             root,
             dependency,
-            `This command must only have a dependency of type "${valueObjectProfile}"`,
+            `This event must not have any dependency other than "${valueObjectProfile}"`,
             dragee => profileOf(dragee, valueObjectProfile)
         )
     );
 
 export default {
-    label: 'Commands Allowed Dependencies',
+    label: 'Events Allowed Dependencies',
     severity: RuleSeverity.ERROR,
     handler: (dragees: Dragee[]): RuleResult[] =>
-        profiles[commandProfile]
+        profiles[eventProfile]
             .findIn(dragees)
-            .map(command => directDependencies(command, dragees))
+            .map(event => directDependencies(event, dragees))
             .filter(dep => dep.dependencies)
             .flatMap(dep => assertDrageeDependency(dep))
 };

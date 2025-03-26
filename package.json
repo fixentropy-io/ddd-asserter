@@ -8,7 +8,8 @@
         "lint": "biome lint",
         "lint:fix": "biome lint --write",
         "check": "biome check",
-        "check:fix": "biome check --write"
+        "check:fix": "biome check --write",
+        "test": "bun test --watch"
     },
     "devDependencies": {
         "@types/bun": "latest",
@@ -20,6 +21,6 @@
     },
     "trustedDependencies": ["@biomejs/biome"],
     "dependencies": {
-        "@dragee-io/type": "0.0.1"
+        "@dragee-io/type": "0.0.2"
     }
 }
