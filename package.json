@@ -1,5 +1,5 @@
 {
-    "name": "@dragee-io/ddd-asserter",
+    "name": "@fixentropy-io/ddd-asserter",
     "module": "index.ts",
     "type": "module",
     "version": "0.0.2",
@@ -21,6 +21,6 @@
     },
     "trustedDependencies": ["@biomejs/biome"],
     "dependencies": {
-        "@dragee-io/type": "0.0.2"
+        "@fixentropy-io/type": "^0.0.6"
     }
 }

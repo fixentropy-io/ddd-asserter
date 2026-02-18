@@ -1,4 +1,4 @@
-import { createRuleFailedOnAsserter, createRulePassedOnAsserter } from '@dragee-io/type/test-utils';
+import { createRuleFailedOnAsserter, createRulePassedOnAsserter } from '@fixentropy-io/type/test-utils';
 import dddAsserter from '../..';
 
 export const rulePassed = createRulePassedOnAsserter(dddAsserter, require);
