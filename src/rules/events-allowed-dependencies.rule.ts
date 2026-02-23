@@ -64,8 +64,8 @@ import {
     RuleSeverity,
     directDependencies,
     expectDragee
-} from '@dragee-io/type/asserter';
-import type { Dragee, DrageeDependency } from '@dragee-io/type/common';
+} from '@fixentropy-io/type/asserter';
+import type { Dragee, DrageeDependency } from '@fixentropy-io/type/common';
 import {
     aggregateProfile,
     eventProfile,
